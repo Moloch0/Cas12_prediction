@@ -28,5 +28,5 @@ seq1,TTTAACAGGGGATACACCTCCTCT
 The command to run the script is as follows:
 
 ```python
-python prediction.py -i input.csv -n CasMINI -o output.csv
+python prediction.py -i example_input.csv -n CasMINI -o output.csv
 ```
