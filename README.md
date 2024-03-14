@@ -21,7 +21,7 @@ pip install pandas joblib
 The input file should be a CSV file with two columns: ID and SEQ. SEQ should be a 24bp sequence, including a 4bp pam and a 20bp target. For example:
 
 ```csv
-ID,SEQ
+ID,SEQ(4bp pam + 20bp target)
 seq1,TTTAACAGGGGATACACCTCCTCT
 ```
 
