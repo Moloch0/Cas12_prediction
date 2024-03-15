@@ -50,18 +50,19 @@ def get_parser():
 
 def one_hot_encode(seq):
 
-    cols = [
-        f"{prefix}_{i}_{nuc}"
-        for prefix, end in [("PAM", 5), ("target", 21)]
-        for i in range(1, end)
-        for nuc in ["A", "T", "C", "G"]
-    ]
+    cols = [f"pos_{i+1}_{nuc}" for i in range(len(seq)) for nuc in ["A", "T", "C", "G"]]
     one_hot_df = pd.DataFrame(columns=cols, index=[0]).fillna(0)
 
     for i, nucleotide in enumerate(seq):
         col_name = f"pos_{i+1}_{nucleotide}"
         one_hot_df.at[0, col_name] = 1
 
+    one_hot_df.columns = [
+        f"{prefix}_{i}_{nuc}"
+        for prefix, end in [("PAM", 5), ("target", 21)]
+        for i in range(1, end)
+        for nuc in ["A", "T", "C", "G"]
+    ]
     return one_hot_df
 
 
@@ -75,9 +76,13 @@ def main(input_filename, model_name, output_filename):
             [one_hot_encode(seq) for seq in input_df.iloc[:, 1]], ignore_index=True
         )
     )
-
+    print(
+        pd.concat(
+            [one_hot_encode(seq) for seq in input_df.iloc[:, 1]], ignore_index=True
+        )
+    )
+    print(predictions)
     input_df[f"{model_name}_efficiency"] = predictions
-
     input_df.to_csv(output_filename, index=False)
 
 
