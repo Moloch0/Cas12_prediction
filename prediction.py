@@ -76,12 +76,6 @@ def main(input_filename, model_name, output_filename):
             [one_hot_encode(seq) for seq in input_df.iloc[:, 1]], ignore_index=True
         )
     )
-    print(
-        pd.concat(
-            [one_hot_encode(seq) for seq in input_df.iloc[:, 1]], ignore_index=True
-        )
-    )
-    print(predictions)
     input_df[f"{model_name}_efficiency"] = predictions
     input_df.to_csv(output_filename, index=False)
 
