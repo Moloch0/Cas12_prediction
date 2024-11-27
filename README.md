@@ -2,10 +2,10 @@
 
 ## 1. Introduction
 
-Cas12f_prediction is a Python script for predicting Cas12f. It takes a CSV file containing sequence information as input, performs prediction using a specified Cas12 (options include CasMINI, OsCas12f1, RhCas12f1), and outputs the prediction results to a CSV file.
+Cas12f_prediction is a Python script for predicting Cas12f. It takes a CSV file containing sequence information as input, performs prediction using a specified Cas12 (options include CasMINI, OsCas12f1, RhCas12f1, enAsCas12f1, SpaCas12f1), and outputs the prediction results to a CSV file.
 
 ```shell
-pip install pandas numpy viennarna biopython onnxruntime 
+pip install pandas numpy viennarna biopython onnxruntime
 git clone https://github.com/Moloch0/Cas12f_prediction.git
 cd Cas12f_prediction
 wget https://github.com/Moloch0/Cas12f_prediction/releases/download/models/models.tar.gz
@@ -16,7 +16,7 @@ tar -xvf models.tar.gz
 
 `-i` or `--input_filename`: The name of the input file. It MUST be a two-column CSV file. This is a required argument.
 
-`-n` or `--Cas12f_name`: The name of the Cas12 to use for prediction. It must be one of 'CasMINI', 'OsCas12f1', 'RhCas12f1'. This is a required argument.
+`-n` or `--Cas12f_name`: The name of the Cas12 to use for prediction. It must be one of 'CasMINI', 'OsCas12f1', 'RhCas12f1', 'enAsCas12f1', 'SpaCas12f1'. This is a required argument.
 
 `-o` or `--output_filename`: The name of the output file. The default is './output.csv'.
 

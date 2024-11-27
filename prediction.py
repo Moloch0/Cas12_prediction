@@ -50,6 +50,8 @@ class FeatureExtractor:
             "CasMINI": "GGGCTTCACTGATAAAGTGGAGAACCGCTTCACCAAAAGCTGTCCCTTAGGGGATTAGAACTTGAGTGAAGGTGGGCTGCTTGCATCAGCCTAATGTCGAGAAGTGCTTTCTTCGGAAAGTAACCCTCGAAACAAATTCATTTGAATGAAGGAATGCAAC",
             "OsCas12f1": "AGGGCCGACTTCCCGGCCCAAAATCGAGACAGTAGCCGTAAAACGTTGAGTTTCAGCGTGGGCGACACACTCGAAAAGGTTAAGATATGCACATAGTAATCCGTGCATGAGCCGCGAAAGCGGCTTGAAGG",
             "RhCas12f1": "GGACGGCTGATTTAGCAGCCGAAGTCTGAGGGCATGTAGAAAAAAGTATAGGTATATACCAACATACTTGCATTGCCACTCGGAAAGGGTTAACCTTGGTCATTGTGTTACCGACCAAGCATTCCAGAAATGGAATGTAAAT",
+            "enAsCas12f1": "GGATTCGTCGGTTCAGCGACGATAAGCCGAGAAGTGCCAATAAAACTGTTAAGTGGTTTGGTAACGCTCGGTAAGGTCCGAAAGGAGAACCACT",
+            "SpaCas12f1": "GTTTCGCGCGCCAGGGCAGTTAGGTGCCCTAAAAGAGCGAAGTGGCCGAAAGGAAAGGCTAACGCTTCTCTAACGCTACGGCGACCTTGGCGAAATGCCATCAATACCACGCGGCCCGAAAGGGTTCGCGCGAAACAAGGTAAGCGCGTGGATTG",
         }
         return scaffolds[self.cas] + self.seqs
 
@@ -191,7 +193,7 @@ def get_parser():
     Author : Liheng Luo
     Email  : <luoliheng@ibms.pumc.edu.cn>
 
-    Optional Cas12s: ['CasMINI', 'OsCas12f1', 'RhCas12f1']
+    Optional Cas12s: ['CasMINI', 'OsCas12f1', 'RhCas12f1', 'enAsCas12f1', 'SpaCas12f1']
 
     Examples:
         1) input file:
@@ -213,7 +215,7 @@ def get_parser():
     parser.add_argument(
         "-n",
         "--Cas12f_name",
-        choices=["CasMINI", "OsCas12f1", "RhCas12f1"],
+        choices=["CasMINI", "OsCas12f1", "RhCas12f1", "enAsCas12f1", "SpaCas12f1"],
         type=str,
         help="The name of the Cas12f to use for prediction.",
         required=True,
@@ -304,6 +306,4 @@ if __name__ == "__main__":
     parser = get_parser()
     args = parser.parse_args()
 
-    if args.Cas12f_name not in ["CasMINI", "OsCas12f1", "RhCas12f1"]:
-        parser.error("One of CasMINI, OsCas12f1, or RhCas12f1 must be chosen.")
     main(args.input_filename, args.Cas12f_name, args.output_filename)
