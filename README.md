@@ -8,7 +8,7 @@ Cas12f_prediction is a Python script for predicting Cas12f. It takes a CSV file 
 pip install pandas numpy viennarna biopython onnxruntime
 git clone https://github.com/Moloch0/Cas12f_prediction.git
 cd Cas12f_prediction
-wget https://github.com/Moloch0/Cas12f_prediction/releases/download/models/models.tar.gz
+wget https://github.com/Moloch0/Cas12f_prediction/releases/download/models_v1/models.tar.gz
 tar -xvf models.tar.gz
 ```
 
